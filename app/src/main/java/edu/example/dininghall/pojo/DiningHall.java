@@ -9,6 +9,7 @@ public class DiningHall {
     private String name;
     private int number;
     private List<Restaurant> restaurants;
+    private boolean isOpen;
 
 
     public DiningHall(String name, int number, List<Restaurant> restaurants) {
@@ -44,5 +45,26 @@ public class DiningHall {
             return Level.CROWDED;
         else
             return Level.OVERCROWDED;
+    }
+
+    public List<Restaurant> getRestaurants() {
+        return restaurants;
+    }
+
+    public boolean isOpen() {
+        return isOpen;
+    }
+
+    public void setOpen(boolean open) {
+        isOpen = open;
+    }
+
+    @Override
+    public String toString() {
+        return "DiningHall{" +
+                "name='" + name + '\'' +
+                ", number=" + number +
+                ", restaurants=" + restaurants +
+                '}';
     }
 }

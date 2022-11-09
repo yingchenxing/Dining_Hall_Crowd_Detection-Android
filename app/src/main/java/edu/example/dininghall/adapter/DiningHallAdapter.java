@@ -62,14 +62,17 @@ public class DiningHallAdapter extends RecyclerView.Adapter<DiningHallAdapter.Vi
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         DiningHall diningHall = mDiningHalls.get(position);
-        if (diningHall.getState() == Level.NORMAL) {
+        holder.diningName.setText(diningHall.getName());
+        if (!diningHall.isOpen()) {
+            holder.diningImage.setImageResource(R.drawable.cir_gray);
+            return;
+        } else if (diningHall.getState() == Level.NORMAL) {
             holder.diningImage.setImageResource(R.drawable.cir_g);
         } else if (diningHall.getState() == Level.CROWDED) {
             holder.diningImage.setImageResource(R.drawable.cir_y);
         } else {
             holder.diningImage.setImageResource(R.drawable.cir_r);
         }
-        holder.diningName.setText(diningHall.getName());
         if (diningHall.getNumber() <= 100)
             holder.diningNumber.setText("" + diningHall.getNumber());
         else
